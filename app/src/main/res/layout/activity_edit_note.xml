@@ -44,29 +44,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShare"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/transparant_bg"
-        android:drawableStart="@drawable/share_24px"
-        android:paddingStart="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnChangeBackground"
-        app:layout_constraintTop_toTopOf="@+id/btnChangeBackground" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDelete"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/transparant_bg"
-        android:drawableStart="@drawable/delete_24px"
-        android:paddingStart="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnShare"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"

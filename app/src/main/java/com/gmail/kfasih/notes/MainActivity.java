@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
         notesViewListAdaptor.setOnViewClickListener(new OnViewClickListener() {
             @Override
             public void onItemViewClick(NotesModel notesModel, int position) {
-                Intent intent = new Intent(MainActivity.this, EditNoteActivity.class);
+                Intent intent = new Intent(MainActivity.this, Update.class);
                 intent.putExtra(NotesModel.COL_Title,notesModel.getTitle());
                 intent.putExtra(NotesModel.COL_DESCRIPTION,notesModel.getDescription());
                 intent.putExtra(NotesModel.COL_DATE,notesModel.getDate());
-                intent.putExtra(NotesModel.COL_IMAGE_PATH,notesModel.getImagePath());
+                if(notesModel.getImagePath()!=null){
+                    intent.putExtra(NotesModel.COL_IMAGE_PATH,notesModel.getImagePath());
+                }
                 intent.putExtra(NotesModel.COL_BACKGROUND_RESOURCE_ID,notesModel.getBackgroundResourceId());
                 intent.putExtra(NotesModel.COL_ID,notesModel.getId());
                 startActivity(intent);
@@ -72,5 +74,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotesViewListAdaptor notesViewListAdaptor = new NotesViewListAdaptor(DB.getInstance(MainActivity.this).getAllNotes());
+        rvNotesList.setAdapter(notesViewListAdaptor);
+        rvNotesList.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        rvNotesList.setHasFixedSize(true);
+        notesViewListAdaptor.setOnViewClickListener(new OnViewClickListener() {
+            @Override
+            public void onItemViewClick(NotesModel notesModel, int position) {
+                Intent intent = new Intent(MainActivity.this, Update.class);
+                intent.putExtra(NotesModel.COL_Title,notesModel.getTitle());
+                intent.putExtra(NotesModel.COL_DESCRIPTION,notesModel.getDescription());
+                intent.putExtra(NotesModel.COL_DATE,notesModel.getDate());
+                if(notesModel.getImagePath()!=null){
+                    intent.putExtra(NotesModel.COL_IMAGE_PATH,notesModel.getImagePath());
+                }
+                intent.putExtra(NotesModel.COL_BACKGROUND_RESOURCE_ID,notesModel.getBackgroundResourceId());
+                intent.putExtra(NotesModel.COL_ID,notesModel.getId());
+                startActivity(intent);
+            }
+        });
+
     }
 }

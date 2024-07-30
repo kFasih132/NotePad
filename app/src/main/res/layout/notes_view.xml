@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:backgroundTint="@color/light_view_color"
+        android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +25,7 @@
                 style="@style/light_heading_txt_style"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tv_height"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +34,7 @@
                 style="@style/light_default_txt_style"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tv_height"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="@id/etViewTitle"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/etViewTitle"
@@ -44,7 +45,7 @@
                 android:id="@+id/tvViewDate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tv_height"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 style="@style/light_small_txt_style"
                 app:layout_constraintEnd_toEndOf="@+id/tvViewDescription"
                 app:layout_constraintHorizontal_bias="0.0"

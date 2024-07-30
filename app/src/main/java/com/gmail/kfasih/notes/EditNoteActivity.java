@@ -1,6 +1,7 @@
 package com.gmail.kfasih.notes;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -43,6 +44,9 @@ public class EditNoteActivity extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        NotesModel notesModel = new NotesModel();
+        notesModel.setBackgroundResourceId(R.color.light_bg_color);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
@@ -60,6 +64,7 @@ public class EditNoteActivity extends AppCompatActivity {
         etViewTitle = findViewById(R.id.etViewTitle);
         tvViewDateAndTime = findViewById(R.id.etViewDateAndTime);
         etViewParagraph = findViewById(R.id.etViewParagraph);
+
 
 
         //setting Current Date and time
@@ -88,23 +93,36 @@ public class EditNoteActivity extends AppCompatActivity {
             ImageView bg5 = dialog.findViewById(R.id.bg5);
             bg1.setOnClickListener(view1 -> {
                 findViewById(R.id.edit_note_main).setBackgroundResource(R.drawable.bg1);
-
+                int resID = getResources().getIdentifier(String.valueOf(bg1), "drawable", getPackageName());
+                notesModel.setBackgroundResourceId(resID);
                 dialog.dismiss();
             });
             bg2.setOnClickListener(view1 -> {
+//                notesModel.setBackgroundResourceId(R.drawable.bg2);
                 findViewById(R.id.edit_note_main).setBackgroundResource(R.drawable.bg2);
+                int resID = getResources().getIdentifier(String.valueOf(bg2), "drawable", getPackageName());
+                notesModel.setBackgroundResourceId(resID);
                 dialog.dismiss();
             });
             bg3.setOnClickListener(view1 -> {
                 findViewById(R.id.edit_note_main).setBackgroundResource(R.drawable.bg3);
+                int resID = getResources().getIdentifier(String.valueOf(bg3), "drawable", getPackageName());
+                notesModel.setBackgroundResourceId(resID);
+//                notesModel.setBackgroundResourceId(R.drawable.bg3);
                 dialog.dismiss();
             });
             bg4.setOnClickListener(view1 -> {
                 findViewById(R.id.edit_note_main).setBackgroundResource(R.drawable.bg4);
+                int resID = getResources().getIdentifier(String.valueOf(bg4), "drawable", getPackageName());
+                notesModel.setBackgroundResourceId(resID);
+//                notesModel.setBackgroundResourceId(R.drawable.bg4);
                 dialog.dismiss();
             });
             bg5.setOnClickListener(view1 -> {
                 findViewById(R.id.edit_note_main).setBackgroundResource(R.drawable.bg5);
+                int resID = getResources().getIdentifier(String.valueOf(bg5), "drawable", getPackageName());
+                notesModel.setBackgroundResourceId(resID);
+//                notesModel.setBackgroundResourceId(R.drawable.bg5);
                 dialog.dismiss();
             });
 
@@ -124,7 +142,6 @@ public class EditNoteActivity extends AppCompatActivity {
             }
         });
         ivPromptImage.setOnClickListener(view -> {
-
             getPicLauncher.launch(new PickVisualMediaRequest());
         });
 
@@ -198,27 +215,22 @@ public class EditNoteActivity extends AppCompatActivity {
             String title = etViewTitle.getText().toString();
             String description = etViewParagraph.getText().toString();
             String date = tvViewDateAndTime.getText().toString();
-
-            NotesModel notesModel = new NotesModel();
             notesModel.setTitle(title);
             notesModel.setDescription(description);
             notesModel.setDate(date);
 
-            if (notesModel.getId() == -1) {
+
+            ImageLogic imageLogic = new ImageLogic();
+            String imagePath = imageLogic.saveToInternalStorage(image[0],this);
+            notesModel.setImagePath(imagePath);
+
                 if(db.insertNotes(notesModel)){
                     Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(this, "Note Not Saved", Toast.LENGTH_SHORT).show();
                 }
-            }else {
-                if (db.updateNotes(notesModel)){
-                    Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(this, "Not Updated", Toast.LENGTH_SHORT).show();
-                }
-            }
+                finish();
         });
-
 
     }
 }

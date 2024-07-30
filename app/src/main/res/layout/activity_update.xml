@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/edit_note_main"
+    android:id="@+id/update_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_bg_color"
-    tools:context=".EditNoteActivity">
+    android:background="@color/light_bg_color"
+    tools:context=".Update">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
@@ -44,6 +44,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnShare"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/transparant_bg"
+        android:drawableStart="@drawable/share_24px"
+        android:paddingStart="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnChangeBackground"
+        app:layout_constraintTop_toTopOf="@+id/btnChangeBackground" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDelete"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/transparant_bg"
+        android:drawableStart="@drawable/delete_24px"
+        android:paddingStart="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnShare"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -57,52 +80,7 @@
             android:padding="16dp"
             >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="12dp"
-                android:alpha="0.65"
-                android:background="@drawable/round_cornner"
-                android:backgroundTint="@color/dark_view_color"
-                android:padding="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivPromptImage"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/upload_24px"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etPromptInput"
-                    style="@style/dark_default_txt_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="50dp"
-                    app:layout_constraintStart_toStartOf="@+id/ivPromptImage"
-                    app:layout_constraintTop_toBottomOf="@+id/ivPromptImage" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnPromptSend"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/transparant_bg"
-                    android:drawableStart="@drawable/send_24px"
-                    android:paddingStart="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/etPromptInput"
-                    app:layout_constraintStart_toEndOf="@+id/etPromptInput"
-                    app:layout_constraintTop_toTopOf="@+id/etPromptInput" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivImageView"
@@ -114,19 +92,18 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etViewTitle"
-                style="@style/dark_heading_txt_style"
+                style="@style/light_heading_txt_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/round_cornner"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/etViewDateAndTime"
-                style="@style/dark_small_txt_style"
+                style="@style/light_small_txt_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -138,11 +115,10 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etViewParagraph"
-                style="@style/dark_default_txt_style"
+                style="@style/light_default_txt_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/round_cornner"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/etViewDateAndTime"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/etViewDateAndTime"
